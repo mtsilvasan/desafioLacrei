@@ -1,5 +1,5 @@
 #autor: MTSilva
-#data: 
+#data: 6/7/25
 #language: pt
 
 Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar profissional
