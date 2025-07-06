@@ -25,7 +25,7 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
       | Campo                 | Valor               |
       | Especialidade         | "Psicologo"         |  
     Então o sistema lista profissionais disponíveis  
-     E clico em "Buscar"
+     E E toca no botão "Buscar"
     Então o sistema exibe uma lista de profissionais disponíveis
     E posso ver informações como:
       | Nome          | "Dra. Ana Silva"  |
