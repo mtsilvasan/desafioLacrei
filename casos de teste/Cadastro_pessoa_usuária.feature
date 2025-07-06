@@ -23,7 +23,7 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
     E toca no botão Buscar
     Então o sistema lista profissionais disponíveis 
 
-  @cadastrobemsucedido @unittest
+  @cadastrobemsucedido @unittest @happy_path
   Cenário: Cadastro bem-sucedido com dados válidos
     Dado que o usuário acessa a tela de cadastro no celular 
     Quando Quando preenche os campos obrigatórios seguindo as regras:
