@@ -138,17 +138,14 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
      E mantém o botão "Cadastrar" desativado     
 
   @buscarprofissional  @unittest
-  Cenário: Búsqueda de profissional  
-    Dado que o usuário acessa a tela de buscar profissional no celular 
-    Quando o usuário navega para "Buscar Profissional"  
-    E filtra seguindo as regras:
-      | Campo                 | Valor               |
-      | Especialidade         | "Psicologo"         |  
-    E toca no botão "Buscar"
-    Então o sistema exibe uma lista de profissionais disponíveis
-    E o usuario pode seleccionar na lista de profissionais disponíveis seguindo as regras:
-      | Campo         | Valor               |
-      | Nome          | "Dra. Ana Silva"  |
-      | Especialidade | "Psicologia clínica" |
-      | Cidade        | "São Paulo" |
-    E habilita o botão Agendar Consulta  
+  Cenário: Busca e seleção de profissional
+  Dado que o usuário está logado no aplicativo no celular
+  E acessa os campos de búsqueda
+  Quando aplica os filtros:
+    | Campo          | Valor           |
+    | Especialidade  | "Psicólogo"     |
+    | Localização    | "São Paulo"     |
+  E toca no botão "Buscar"
+  Então o sistema exibe uma lista de profissionais
+    | Campo          | Valor           |
+    | Nome          | "Dra. Ana Silva"       |
