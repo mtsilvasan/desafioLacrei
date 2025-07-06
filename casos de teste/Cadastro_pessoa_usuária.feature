@@ -20,6 +20,7 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
    # Buscar profissional  
     Quando o usuário acessa a tela de buscar profissional no celular
     E preenche o campo de búsqueda com a especialidade 
+    E toca no botão Buscar
     Então o sistema lista profissionais disponíveis 
 
   @cadastrobemsucedido @unittest
