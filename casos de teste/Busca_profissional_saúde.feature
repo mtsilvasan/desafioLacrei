@@ -17,7 +17,7 @@ Feature: Busca de profissional de saúde: buscar profissional → contatar profi
     E E toca no botão "Contatar"
     Então o sistema habilita a opcão de contato
  
- @buscarprofissional  @unittest
+ @buscarprofissional  @unittest 
  Cenário: Busca e seleção de profissional
   Dado que o usuário acessa a tela de buscar profissional no celular
   E acessa os campos de búsqueda
