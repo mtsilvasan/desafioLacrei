@@ -19,41 +19,12 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
     E toca no botão "Entrar"  
     Então o sistema exibe a tela inicial do app  
 
-    # Buscar profissional  
-    Quando o usuário navega para "Buscar Profissional"  
-    E filtra seguindo as regras:
-      | Campo                 | Valor               |
-      | Especialidade         | "Psicologo"         |  
-    Então o sistema lista profissionais disponíveis  
-     E E toca no botão "Buscar"
-    Então o sistema exibe uma lista de profissionais disponíveis
-    E posso seleccionar na lista de profissionais disponíveis seguindo as regras:
-      | Campo         | Valor               |
-      | Nome          | "Dra. Ana Silva"  |
-      | Especialidade | "Psicologia clínica" |
-      | Cidade        | "São Paulo" |
-    E permite agendar uma consulta  
+   # Buscar profissional  
+    Quando o usuário acessa a tela de buscar profissional no celular
+    E preenche o campo de búsqueda com a especialidade 
+    Então o sistema lista profissionais disponíveis 
 
-  @cadastropessoausuária
-  Cenário: Cadastro bem-sucedido com dados válidos, login e buscar profissional  
-    Dado que o usuário acessa a tela de cadastro no celular 
-    Quando Quando preenche os campos obrigatórios seguindo as regras:
-      | Campo                 | Valor               |
-      | Nome civil ou social  | "Maria"             |
-      | Sobrenome             | "Silva"             |
-      | E-mail                | "maria@gmail.com"   |
-      | Confirme seu e-mail   | "maria@gmail.com    |
-      | Senha                 | "Senha123!"         |
-      | Confirme sua Senha    | "Senha123!"         |
-    E toca no botão "Cadastrar"
-    E aceita os termos de uso e política de privacidade
-    E marca o check Tenho 18 anos ou mais
-    E toca no botão "Cadastrar"
-    Então o sistema envia o mail de cadastro bem-sucedido 
-    E exibe a mensagem "Cadastro realizado com sucesso!" 
-    E redireciona para a home logada 
-
-     @loginbemsucedido
+  @loginbemsucedido 
   Cenário: Cadastro bem-sucedido com dados válidos
     Dado que o usuário acessa a tela de cadastro no celular 
     Quando Quando preenche os campos obrigatórios seguindo as regras:
@@ -64,14 +35,30 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
       | Confirme seu e-mail   | "maria@gmail.com    |
       | Senha                 | "Senha123!"         |
       | Confirme sua Senha    | "Senha123!"         |
-    E toca no botão "Cadastrar"
     E aceita os termos de uso e política de privacidade
     E marca o check Tenho 18 anos ou mais
-    E toca no botão "Cadastrar"
-    Então o sistema envia o mail de cadastro bem-sucedido 
-    E exibe a mensagem "Cadastro realizado com sucesso!" 
-    E redireciona para a home logada 
+    Então o sistema valida os dados e habilita o botão "Cadastrar"
+  
+    Quando o usuário toca no botão "Cadastrar" habilitado
+    Então o sistema:
+    - Registra o usuário na base de dados
+    - Envia o mail de cadastro bem-sucedido 
+    - Exibe a mensagem "Cadastro realizado com sucesso!"
+    - Redireciona para a tela de login
 
+@cadastrosemdados
+  Cenário: Cadastro com campos obrigatórios em branco
+    Dado que o usuário acessa a tela de cadastro no celular 
+    Quando deixa todos os campos vazios  
+    Então o sistema mantém o botão "Cadastrar" desativado   
+
+@cadastroemchecksmarcados
+  Cenário: Cadastro com check sem marcar
+    Dado que o usuário acessa a tela de cadastro no celular 
+    Quando deixa todos os check sem marcar  
+    Então o sistema mantém o botão "Cadastrar" desativado  
+
+    
 @logimsemdados
   Cenário: Cadastro com campos obrigatórios em branco
     Dado que o usuário acessa a tela de cadastro no celular 
@@ -146,3 +133,20 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
     Então o sistema exibe as mensagens (vermelho) embaixo:  
        "As sebhas não correspondem, digite novamente"   
      E mantém o botão "Cadastrar" desativado     
+
+  @buscarprofissional  
+  Cenário: Búsqueda de profissional  
+    Dado que o usuário acessa a tela de buscar profissional no celular 
+    Quando o usuário navega para "Buscar Profissional"  
+    E filtra seguindo as regras:
+      | Campo                 | Valor               |
+      | Especialidade         | "Psicologo"         |  
+    Então o sistema lista profissionais disponíveis  
+     E E toca no botão "Buscar"
+    Então o sistema exibe uma lista de profissionais disponíveis
+    E posso seleccionar na lista de profissionais disponíveis seguindo as regras:
+      | Campo         | Valor               |
+      | Nome          | "Dra. Ana Silva"  |
+      | Especialidade | "Psicologia clínica" |
+      | Cidade        | "São Paulo" |
+    E permite agendar uma consulta  
