@@ -57,13 +57,14 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
     Dado que o usuário acessa a tela de cadastro no celular 
     Quando deixa todos os check sem marcar  
     Então o sistema mantém o botão "Cadastrar" desativado  
-
     
-@logimsemdados
+@mudançadedados
   Cenário: Cadastro com campos obrigatórios em branco
     Dado que o usuário acessa a tela de cadastro no celular 
-    Quando deixa todos os campos vazios  
-    E toca no botão "Cadastrar" 
+    Quando preenche os dados corretamente 
+    Então o sistema valida os dados e habilita o botão "Cadastrar"
+
+    Quando o usuario elimina o valor do campo editavel
     Então o sistema exibe mensagens de erro (vermelho) embaixo de cada campo: 
     | Campo               | Mensagem de erro               |  
     | Nome civil ou social | "O nome é obrigatório"      |  
@@ -72,18 +73,20 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
     | Confirme seu e-mail  | "O e-mail é obrigatório"      |  
     | Senha                | "A senha é obrigatório"      |  
     | Confirme sua senha   | "A senha é obrigatório"      |  
-    E mantém o botão "Cadastrar" desativado   
+    E desativa o botão "Cadastrar"    
 
 @logimsemchecksmarcados
   Cenário: Cadastro com check sem marcar
     Dado que o usuário acessa a tela de cadastro no celular 
-    Quando deixa todos os check sem marcar  
-    E toca no botão "Cadastrar" 
+    Quando preenche os dados corretamente 
+    Então o sistema valida os dados e habilita o botão "Cadastrar"
+    
+    Quando desmarca os check 
     Então o sistema exibe mensagens de erro (vermelho) embaixo de cada campo: 
     | Campo               | Mensagem de erro               |  
     | Li e concordo com os termos de uso e política de privacidade  | "Você deve aceitar os termos"      |  
     | Tenho 18 anos ou mais  | "Você deve ter 18 anos ou mais"      |  
-    E mantém o botão "Cadastrar" desativado       
+    E desativa o botão "Cadastrar"      
 
 @emailinvalido
   Cenário: Cadastro com e-mail inválido  
