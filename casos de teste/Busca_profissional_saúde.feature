@@ -7,18 +7,18 @@ Feature: Busca de profissional de saúde: buscar profissional → contatar profi
  @fluxocompleto   
  Cenário: Buscar e contrar profissional com sucesso
  # Buscar profissional  
-    Dado que estou logado no aplicativo mobile
-    E que acesso a seção "Buscar Profissional"
-    Quando  filtra seguindo as regras:
+    Quando o usuário navega para "Buscar Profissional"  
+    E filtra seguindo as regras:
       | Campo                 | Valor               |
       | Especialidade         | "Psicologo"         |  
     Então o sistema lista profissionais disponíveis  
-    E clico em "Buscar"
+     E clico em "Buscar"
     Então o sistema exibe uma lista de profissionais disponíveis
     E posso ver informações como:
       | Nome          | "Dra. Ana Silva"  |
       | Especialidade | "Psicologia clínica" |
       | Cidade        | "São Paulo" |
+    E permite agendar uma consulta  
   
     Quando seleciono o profissional "Dra. Ana Silva"
     E clico em "Contatar"
