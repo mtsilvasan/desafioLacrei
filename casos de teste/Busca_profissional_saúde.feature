@@ -41,7 +41,7 @@ Feature: Busca de profissional de saúde: buscar profissional → contatar profi
      | Tipo de atendimento | "Atendimento presencial, Atendimento on line"|
   - Habilita o botão "Contatar Profissional"
   
-  @contatarprofissionalbemsucedido  @unittest
+  @contatarprofissionalbemsucedido @unittest @happy_path
   Cenário: Fazer contato com profissional bem sucedido con dados válidos
   Dado que o usuário acessa a tela de buscar profissional no celular
   Quando  toca no botão "Contatar Profissional" do profissional selecionado
