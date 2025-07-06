@@ -4,6 +4,29 @@
 
 Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar profissional
 
+ @fluxocompleto   
+  Cenário: Fluxo integrado cadastro, login e busca de profissional  
+    # Cadastro  
+    Dado que o usuário acessa a tela de cadastro no celular 
+    Quando preenche o formulário de cadastro com dados válidos  
+    E aceita os termos e políticas 
+    E aceita os termos de uso e política de privacidade
+    E marca o check Tenho 18 anos ou mais
+    Então o sistema cria a conta e redireciona para a pós-cadastro (login) 
+
+    # Pós-cadastro  
+    Quando o usuário preenche as informações de login
+    E toca no botão "Entrar"  
+    Então o sistema exibe a tela inicial do app  
+
+    # Buscar profissional  
+    Quando o usuário navega para "Buscar Profissional"  
+    E filtra seguindo as regras:
+      | Campo                 | Valor               |
+      | Especialidade         | "Psicologo"         |  
+    Então o sistema lista profissionais disponíveis  
+    E permite agendar uma consulta  
+
   @cadastropessoausuária
   Cenário: Cadastro bem-sucedido com dados válidos, login e buscar profissional  
     Dado que o usuário acessa a tela de cadastro no celular 
