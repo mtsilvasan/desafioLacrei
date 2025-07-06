@@ -1,0 +1,99 @@
+#autor: MTSilva
+#data: 
+#language: pt
+
+Feature: Cadastro da pessoa usuária: cadastro 
+
+  @loginbemsucedido
+  Cenário: Cadastro bem-sucedido com dados válidos  
+    Dado que o usuário acessa a tela de cadastro no celular 
+    Quando Quando preenche os campos obrigatórios seguindo as regras:
+      | Campo                 | Valor               |
+      | Nome civil ou social  | "Maria"             |
+      | Sobrenome             | "Silva"             |
+      | E-mail                | "maria@gmail.com"   |
+      | Confirme seu e-mail   | "maria@gmail.com    |
+      | Senha                 | "Senha123!"         |
+      | Confirme sua Senha    | "Senha123!"         |
+    E toca no botão "Cadastrar"
+    E aceita os termos de uso e política de privacidade
+    E marca o check Tenho 18 anos ou mais
+    E toca no botão "Cadastrar"
+    Então o sistema envia o mail de cadastro bem-sucedido 
+    E exibe a mensagem "Cadastro realizado com sucesso!" 
+    E redireciona para a home logada 
+
+@logimsemdados
+  Cenário: Cadastro com campos obrigatórios em branco
+    Dado que o usuário acessa a tela de cadastro no celular 
+    Quando deixa todos os campos vazios  
+    E toca no botão "Cadastrar" 
+    Então o sistema exibe mensagens de erro (vermelho) embaixo de cada campo: 
+    | Campo               | Mensagem de erro               |  
+    | Nome civil ou social | "O nome é obrigatório"      |  
+    | Sobrenome            | "O sobrenome é obrigatório"      |  
+    | E-mail               | "O e-mail é obrigatório"      |  
+    | Confirme seu e-mail  | "O e-mail é obrigatório"      |  
+    | Senha                | "A senha é obrigatório"      |  
+    | Confirme sua senha   | "A senha é obrigatório"      |  
+    E mantém o botão "Cadastrar" desativado   
+
+@logimsemchecksmarcados
+  Cenário: Cadastro com check sem marcar
+    Dado que o usuário acessa a tela de cadastro no celular 
+    Quando deixa todos os check sem marcar  
+    E toca no botão "Cadastrar" 
+    Então o sistema exibe mensagens de erro (vermelho) embaixo de cada campo: 
+    | Campo               | Mensagem de erro               |  
+    | Li e concordo com os termos de uso e política de privacidade  | "Você deve aceitar os termos"      |  
+    | Tenho 18 anos ou mais  | "Você deve ter 18 anos ou mais"      |  
+    E mantém o botão "Cadastrar" desativado       
+
+@emailinvalido
+  Cenário: Cadastro com e-mail inválido  
+    Dado que o usuário acessa a tela de cadastro no celular
+    Quando preenche:  
+      | Campo               | Valor                |  
+      | E-mail              | "email_invalido"      |  
+    E toca no botão "Cadastrar"  
+    Então o sistema exibe a mensagen (vermelho) embaixo:  
+      - "Insira um e-mail válido"     
+     E mantém o botão "Cadastrar" desativado     
+
+  @emailnãocorresponde
+  Cenário: Cadastro com confirmação de e-mail incorreta  
+    Dado que o usuário acessa a tela de cadastro no celular
+    Quando preenche:  
+      | Campo               | Valor                |  
+      | Confirme seu e-mail | "outro_email@gmail.com" |  
+    E toca no botão "Cadastrar"  
+    Então o sistema exibe as mensagens (vermelho) embaixo:  
+      - "Os e-mails não correspondem, digite novamente"  
+     E mantém o botão "Cadastrar" desativado     
+ 
+ @senhafraca
+  Cenário: Cadastro com senha fraca
+    Dado que o usuário insere uma senha
+      | Campo              | Valor                |  
+      | Senha              | "senha"               |  
+    Quando o sistema valida a senha
+    Então exibe o status de cada requisito:
+      """
+      ✖ 8 caracteres (inseridos: 5)
+      ✖ Letra maiúscula (A-Z)
+      ✔ Letra minúscula (a-z)
+      ✖ Número (0-9)
+      ✖ Caractere especial (!@#...)
+      """
+    E mantém o botão "Cadastrar" desativado   
+      
+@senhanãocorresponde
+  Cenário: Cadastro com confirmação de e-mail incorreta  
+    Dado que o usuário acessa a tela de cadastro no celular
+    Quando preenche:  
+      | Campo               | Valor                |  
+      | Confirme seu e-mail | "outro_email@gmail.com" |  
+    E toca no botão "Cadastrar"  
+    Então o sistema exibe as mensagens (vermelho) embaixo:  
+       "As sebhas não correspondem, digite novamente"   
+     E mantém o botão "Cadastrar" desativado     
