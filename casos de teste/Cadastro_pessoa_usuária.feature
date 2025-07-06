@@ -73,7 +73,7 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
     | Confirme sua senha   | "A senha é obrigatório"      |  
     E desativa o botão "Cadastrar"    
 
-  @mudançacheck
+  @mudançacheck @unittest
   Cenário: Cadastro com check sem marcar
     Dado que o usuário acessa a tela de cadastro no celular 
     Quando preenche os dados corretamente 
@@ -86,7 +86,7 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
     | Tenho 18 anos ou mais  | "Você deve ter 18 anos ou mais"      |  
     E desativa o botão "Cadastrar"      
 
-  @emailinvalido
+  @emailinvalido @unittest
   Cenário: Cadastro com e-mail inválido  
     Dado que o usuário acessa a tela de cadastro no celular
     Quando preenche:  
@@ -97,7 +97,7 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
       - "Insira um e-mail válido"     
      E mantém o botão "Cadastrar" desativado     
 
-  @emailnãocorresponde
+  @emailnãocorresponde @unittest
   Cenário: Cadastro com confirmação de e-mail incorreta  
     Dado que o usuário acessa a tela de cadastro no celular
     Quando preenche:  
@@ -108,7 +108,7 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
       - "Os e-mails não correspondem, digite novamente"  
      E mantém o botão "Cadastrar" desativado     
  
-  @senhafraca
+  @senhafraca @unittest
   Cenário: Cadastro com senha fraca
     Dado que o usuário acessa a tela de cadastro no celular
     Quando preenche:
@@ -125,7 +125,7 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
       """
     E mantém o botão "Cadastrar" desativado   
       
-  @senhanãocorresponde
+  @senhanãocorresponde @unittest
   Cenário: Cadastro com confirmação de e-mail incorreta  
     Dado que o usuário acessa a tela de cadastro no celular
     Quando preenche:  
@@ -136,7 +136,7 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
        "As senhas não correspondem, digite novamente"   
      E mantém o botão "Cadastrar" desativado     
 
-  @buscarprofissional  
+  @buscarprofissional  @unittest
   Cenário: Búsqueda de profissional  
     Dado que o usuário acessa a tela de buscar profissional no celular 
     Quando o usuário navega para "Buscar Profissional"  
