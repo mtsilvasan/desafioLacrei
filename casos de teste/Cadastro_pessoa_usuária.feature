@@ -2,10 +2,29 @@
 #data: 
 #language: pt
 
-Feature: Cadastro da pessoa usuária: cadastro 
+Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar profissional
 
-  @loginbemsucedido
-  Cenário: Cadastro bem-sucedido com dados válidos  
+  @cadastropessoausuária
+  Cenário: Cadastro bem-sucedido com dados válidos, login e buscar profissional  
+    Dado que o usuário acessa a tela de cadastro no celular 
+    Quando Quando preenche os campos obrigatórios seguindo as regras:
+      | Campo                 | Valor               |
+      | Nome civil ou social  | "Maria"             |
+      | Sobrenome             | "Silva"             |
+      | E-mail                | "maria@gmail.com"   |
+      | Confirme seu e-mail   | "maria@gmail.com    |
+      | Senha                 | "Senha123!"         |
+      | Confirme sua Senha    | "Senha123!"         |
+    E toca no botão "Cadastrar"
+    E aceita os termos de uso e política de privacidade
+    E marca o check Tenho 18 anos ou mais
+    E toca no botão "Cadastrar"
+    Então o sistema envia o mail de cadastro bem-sucedido 
+    E exibe a mensagem "Cadastro realizado com sucesso!" 
+    E redireciona para a home logada 
+
+     @loginbemsucedido
+  Cenário: Cadastro bem-sucedido com dados válidos
     Dado que o usuário acessa a tela de cadastro no celular 
     Quando Quando preenche os campos obrigatórios seguindo as regras:
       | Campo                 | Valor               |
