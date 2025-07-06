@@ -4,11 +4,12 @@
 
 Feature: Busca de profissional de saúde: buscar profissional → contatar profissional
 
- @fluxocompleto   
- Cenário: Buscar e contrar profissional com sucesso
+ @fluxocompleto @smoketest  
+ Cenário: Buscar e contatar profissional com sucesso
  # Buscar profissional  
     Dado que o usuário acessa a tela de buscar profissional no celular
-    Quando preenche o o campo de búsqueda com a especialidade 
+    Quando preenche o campo de búsqueda com a especialidade 
+    E toca no botão Buscar
     Então o sistema lista profissionais disponíveis  
      
   #contatar profissional
