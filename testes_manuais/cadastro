@@ -1,1 +1,11 @@
+**Arquivo: features/cadastro.feature  **
 
+## Cenário CT-001: Cadastro válido
+- **Data**: 15/05/2024  
+- **Responsável**: @MTSilva
+- **Status**:  Falhou
+- **Bug Report**: [Issue #45](https://github.com/.../issues/45)  
+
+## Cenário CT-002: E-mail inválido  
+- **Status**: ❌ Falhou  
+- **Bug Report**: [Issue #45](https://github.com/.../issues/45)  
