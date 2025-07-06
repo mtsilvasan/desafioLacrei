@@ -12,16 +12,16 @@ Feature: Busca de profissional de saúde: buscar profissional → contatar profi
       | Campo                 | Valor               |
       | Especialidade         | "Psicologo"         |  
     Então o sistema lista profissionais disponíveis  
-     E clico em "Buscar"
+     E E toca no botão "Buscar"
     Então o sistema exibe uma lista de profissionais disponíveis
     E posso ver informações como:
       | Nome          | "Dra. Ana Silva"  |
       | Especialidade | "Psicologia clínica" |
       | Cidade        | "São Paulo" |
     E permite agendar uma consulta  
-  
+  #contatar profissional
     Quando seleciono o profissional "Dra. Ana Silva"
-    E clico em "Contatar"
+    E E toca no botão "Agendar"
     Então o sistema abre as opções de contato:
       | Opção          | Disponibilidade |
       | Mensagem       | Disponível      |
