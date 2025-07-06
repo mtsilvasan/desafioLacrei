@@ -72,5 +72,10 @@ Feature: Recuperação de senha: fluxo completo de esqueci minha senha
        "As senhas não correspondem, digite novamente"   
   E destaiva o botão "Redefinir senha" 
 
-
+ @linkexpirado @unittest
+  Cenário: Link de recuperação expirado
+    Dado que o usuário recebeu um link 
+    Quando tenta redefinir a senha via link expirado
+    Então o sistema bloqueia a ação
+    E exibe "Link expirado. Solicite um novo"
     
