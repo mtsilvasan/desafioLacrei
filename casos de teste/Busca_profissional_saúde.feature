@@ -5,19 +5,21 @@
 Feature: Busca de profissional de saúde: buscar profissional → contatar profissional
 
  @fluxocompleto   
- Scenario: Buscar e contactar profissional com sucesso
+ Cenário: Buscar e contrar profissional com sucesso
+ # Buscar profissional  
     Dado que estou logado no aplicativo mobile
     E que acesso a seção "Buscar Profissional"
-    Quando preencho os filtros com:
-      | Especialidade | "Psicólogo"       |
-      | Localização   | "São Paulo"       |
-      | Tipo de Atendimento | "Online"    |
+    Quando  filtra seguindo as regras:
+      | Campo                 | Valor               |
+      | Especialidade         | "Psicologo"         |  
+    Então o sistema lista profissionais disponíveis  
     E clico em "Buscar"
     Então o sistema exibe uma lista de profissionais disponíveis
     E posso ver informações como:
       | Nome          | "Dra. Ana Silva"  |
       | Especialidade | "Psicologia clínica" |
-      | Avaliação     | "4.9 ★"          |
+      | Cidade        | "São Paulo" |
+  
     Quando seleciono o profissional "Dra. Ana Silva"
     E clico em "Contatar"
     Então o sistema abre as opções de contato:
