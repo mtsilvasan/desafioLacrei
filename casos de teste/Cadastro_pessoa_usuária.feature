@@ -25,6 +25,12 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
       | Campo                 | Valor               |
       | Especialidade         | "Psicologo"         |  
     Então o sistema lista profissionais disponíveis  
+     E clico em "Buscar"
+    Então o sistema exibe uma lista de profissionais disponíveis
+    E posso ver informações como:
+      | Nome          | "Dra. Ana Silva"  |
+      | Especialidade | "Psicologia clínica" |
+      | Cidade        | "São Paulo" |
     E permite agendar uma consulta  
 
   @cadastropessoausuária
