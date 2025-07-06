@@ -4,27 +4,25 @@
 
 Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar profissional
 
- @fluxocompleto   
+ @fluxocompleto   @smoketest
   Cenário: Fluxo integrado cadastro, login e busca de profissional  
     # Cadastro  
     Dado que o usuário acessa a tela de cadastro no celular 
     Quando preenche o formulário de cadastro com dados válidos  
-    E aceita os termos e políticas 
-    E aceita os termos de uso e política de privacidade
-    E marca o check Tenho 18 anos ou mais
+    E marca todos os check
     Então o sistema cria a conta e redireciona para a pós-cadastro (login) 
 
     # Pós-cadastro  
     Quando o usuário preenche as informações de login
     E toca no botão "Entrar"  
-    Então o sistema exibe a tela inicial do app  
+    Então o sistema exibe a tela inicial do app com as funcionalidades do sistema 
 
    # Buscar profissional  
     Quando o usuário acessa a tela de buscar profissional no celular
     E preenche o campo de búsqueda com a especialidade 
     Então o sistema lista profissionais disponíveis 
 
-  @loginbemsucedido 
+  @cadastrobemsucedido @unittest
   Cenário: Cadastro bem-sucedido com dados válidos
     Dado que o usuário acessa a tela de cadastro no celular 
     Quando Quando preenche os campos obrigatórios seguindo as regras:
@@ -46,26 +44,26 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
     - Exibe a mensagem "Cadastro realizado com sucesso!"
     - Redireciona para a tela de login
 
-@cadastrosemdados
+  @cadastrosemdados @unittest
   Cenário: Cadastro com campos obrigatórios em branco
     Dado que o usuário acessa a tela de cadastro no celular 
-    Quando deixa todos os campos vazios  
+    Quando deixa todos ou algum campo editável vazio  
     Então o sistema mantém o botão "Cadastrar" desativado   
 
-@cadastroemchecksmarcados
+  @cadastroemchecksmarcados @unittest
   Cenário: Cadastro com check sem marcar
     Dado que o usuário acessa a tela de cadastro no celular 
-    Quando deixa todos os check sem marcar  
+    Quando deixa todos ou algum check sem marcar  
     Então o sistema mantém o botão "Cadastrar" desativado  
     
-@mudançadedados
+  @mudançadedados @unittest
   Cenário: Cadastro com campos obrigatórios em branco
     Dado que o usuário acessa a tela de cadastro no celular 
     Quando preenche os dados corretamente 
     Então o sistema valida os dados e habilita o botão "Cadastrar"
 
     Quando o usuario elimina o valor do campo editavel
-    Então o sistema exibe mensagens de erro (vermelho) embaixo de cada campo: 
+    Então o sistema exibe mensagens de erro (vermelho) embaixo de cada campo eliminado: 
     | Campo               | Mensagem de erro               |  
     | Nome civil ou social | "O nome é obrigatório"      |  
     | Sobrenome            | "O sobrenome é obrigatório"      |  
@@ -75,20 +73,20 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
     | Confirme sua senha   | "A senha é obrigatório"      |  
     E desativa o botão "Cadastrar"    
 
-@logimsemchecksmarcados
+  @mudançacheck
   Cenário: Cadastro com check sem marcar
     Dado que o usuário acessa a tela de cadastro no celular 
     Quando preenche os dados corretamente 
     Então o sistema valida os dados e habilita o botão "Cadastrar"
     
     Quando desmarca os check 
-    Então o sistema exibe mensagens de erro (vermelho) embaixo de cada campo: 
+    Então o sistema exibe mensagens de erro (vermelho) embaixo de cada campo desmarcado: 
     | Campo               | Mensagem de erro               |  
     | Li e concordo com os termos de uso e política de privacidade  | "Você deve aceitar os termos"      |  
     | Tenho 18 anos ou mais  | "Você deve ter 18 anos ou mais"      |  
     E desativa o botão "Cadastrar"      
 
-@emailinvalido
+  @emailinvalido
   Cenário: Cadastro com e-mail inválido  
     Dado que o usuário acessa a tela de cadastro no celular
     Quando preenche:  
@@ -110,9 +108,10 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
       - "Os e-mails não correspondem, digite novamente"  
      E mantém o botão "Cadastrar" desativado     
  
- @senhafraca
+  @senhafraca
   Cenário: Cadastro com senha fraca
-    Dado que o usuário insere uma senha
+    Dado que o usuário acessa a tela de cadastro no celular
+    Quando preenche:
       | Campo              | Valor                |  
       | Senha              | "senha"               |  
     Quando o sistema valida a senha
@@ -126,7 +125,7 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
       """
     E mantém o botão "Cadastrar" desativado   
       
-@senhanãocorresponde
+  @senhanãocorresponde
   Cenário: Cadastro com confirmação de e-mail incorreta  
     Dado que o usuário acessa a tela de cadastro no celular
     Quando preenche:  
@@ -134,7 +133,7 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
       | Confirme seu e-mail | "outro_email@gmail.com" |  
     E toca no botão "Cadastrar"  
     Então o sistema exibe as mensagens (vermelho) embaixo:  
-       "As sebhas não correspondem, digite novamente"   
+       "As senhas não correspondem, digite novamente"   
      E mantém o botão "Cadastrar" desativado     
 
   @buscarprofissional  
@@ -144,12 +143,11 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
     E filtra seguindo as regras:
       | Campo                 | Valor               |
       | Especialidade         | "Psicologo"         |  
-    Então o sistema lista profissionais disponíveis  
-     E E toca no botão "Buscar"
+    E toca no botão "Buscar"
     Então o sistema exibe uma lista de profissionais disponíveis
-    E posso seleccionar na lista de profissionais disponíveis seguindo as regras:
+    E o usuario pode seleccionar na lista de profissionais disponíveis seguindo as regras:
       | Campo         | Valor               |
       | Nome          | "Dra. Ana Silva"  |
       | Especialidade | "Psicologia clínica" |
       | Cidade        | "São Paulo" |
-    E permite agendar uma consulta  
+    E habilita o botão Agendar Consulta  
