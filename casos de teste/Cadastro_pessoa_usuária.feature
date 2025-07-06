@@ -27,7 +27,8 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
     Então o sistema lista profissionais disponíveis  
      E E toca no botão "Buscar"
     Então o sistema exibe uma lista de profissionais disponíveis
-    E posso ver informações como:
+    E posso seguindo as regras:
+      | Campo         | Valor               |
       | Nome          | "Dra. Ana Silva"  |
       | Especialidade | "Psicologia clínica" |
       | Cidade        | "São Paulo" |
