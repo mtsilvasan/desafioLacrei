@@ -1,11 +1,36 @@
-**Arquivo: features/cadastro.feature  **
+**Arquivo: casos de teste/Cadastro_pessoa_usuária.feature  **
+Data: 7/7/2025  
+Tester: @MTSilva
 
-## Cenário CT-001: Cadastro válido
-- **Data**: 15/05/2024  
-- **Responsável**: @MTSilva
-- **Status**:  Falhou
-- **Bug Report**: [Issue #45](https://github.com/.../issues/45)  
+## Cenário CT-001: Fluxo integrado cadastro, login e busca de profissional  
+Status:  Fail
+Bug Report: [Issue #45](https://github.com/.../issues/45)  
 
-## Cenário CT-002: E-mail inválido  
+## Cenário CT-002:  Cadastro bem-sucedido com dados válidos
 - **Status**: ❌ Falhou  
 - **Bug Report**: [Issue #45](https://github.com/.../issues/45)  
+
+## Cenário CT-003:  Cadastro com campos obrigatórios em branco
+
+
+## Cenário CT-004:  Cadastro com check sem marcar
+
+
+## Cenário CT-005:  Cadastro com campos obrigatórios em branco
+
+
+## Cenário CT-006:  Cadastro com check sem marcar
+
+
+## Cenário CT-007:  Cadastro com e-mail inválido 
+
+## Cenário CT-008:  Cadastro com confirmação de e-mail incorreta 
+
+## Cenário CT-009:  Cadastro com senha fraca
+
+## Cenário CT-010:  Cadastro com confirmação de e-mail incorreta  
+
+## Cenário CT-011:  Busca e seleção de profissional
+
+
+
