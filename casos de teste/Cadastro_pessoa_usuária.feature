@@ -169,12 +169,12 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
   Cenário: visulaização de senha inserida
   Quando preenche:
       | Campo              | Valor                |  
-      | Senha              | "senha"   
+      | Senha              | "senha"   |
   E toca no botão de "olho"
   Então o sistema exibe o valor da senha
 
   @visualização de confirmação de senha
-  Cenário: visulaização de senha inserida
+  Cenário: visulaização de confirmação de senha inserida
   Quando preenche:
       | Campo                          | Valor                |  
       | Confirme sua enha              | "senha"   
