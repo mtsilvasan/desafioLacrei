@@ -4,7 +4,7 @@
 
 Feature: Edição de perfil: inserir e atualizar informações
 
-  @edperfil @happy_path @unittest
+  @CT-001 @edperfil @happy_path @unittest
   Cenário: Atualização bem-sucedida de informações básicas
     Dado que o usuário está logado no aplicativo
     E acessa a seção "Meu Perfil"
@@ -20,7 +20,7 @@ Feature: Edição de perfil: inserir e atualizar informações
       - Exibe a mensagem "Perfil atualizado com sucesso"
       - Reflete as mudanças na tela de perfil
 
-  @perfil @validacao
+  @CT-002 @perfil @validacao
   Cenário: Atualização com telefone inválido
     Dado que o usuário está na tela de edição
     Quando preenche:
