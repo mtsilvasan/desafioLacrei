@@ -93,10 +93,20 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
     Quando preenche:  
       | Campo               | Valor                |  
       | E-mail              | "email_invalido"      |  
+    Então o sistema mantém o botão "Cadastrar" desativado 
+    
+   @emailinvalido @unittest
+   Cenário: Cadastro com e-mail inválido  
+    Dado que o usuário acessa a tela de cadastro no celular tocando no botão "Criar Conta"
+    Quando preenche:  
+      | Campo               | Valor                |  
+      | E-mail              | "email_invalido"      |  
     E toca no botão "Cadastrar"  
     Então o sistema exibe a mensagen (vermelho) embaixo:  
       - "Insira um e-mail válido"     
-     E mantém o botão "Cadastrar" desativado     
+     E mantém o botão "Cadastrar" desativado 
+
+     
 
   @emailnãocorresponde @unittest
   Cenário: Cadastro com confirmação de e-mail incorreta  
