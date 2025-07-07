@@ -20,14 +20,13 @@ Tag	        Propósito
 ** Dispositivo:**  
 Celular iPhone 13 de Apple OS iOS 18.5  
 App Version: XXXXXX
+Rede: VIVO
+Operadora: VIVO 64.0
+Idioma: Português 
+Data: 7/7/2025  
+Tester: @mtsilva
 
-**🌍 Contexto:**  
-- Red: 5G (Claro BR)  
-- Idioma: Português (Brasil)  
-- Fecha: 20/05/2024  
-- Tester: @marialima  
-
-**✅ Resultados:**  
+**Resumo dos Resultados**  
 | CT-ID | Status | Tempo de Execução | Observações          |  
 |-------|--------|-------------------|----------------------|  
 | CT-01 | ✅     | 2m 15s            | -                    |  
