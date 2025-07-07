@@ -1,4 +1,4 @@
-#autor: MTSilva
+etados#autor: MTSilva
 #data: 6/7/25
 #language: pt
 
@@ -58,7 +58,7 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
     Então o sistema mantém o botão "Cadastrar" desativado  
     
   @mudançadedados @unittest
-  Cenário: Cadastro com campos obrigatórios em branco
+  Cenário: Cadastro com campos obrigatórios eliminados
     Dado que o usuário acessa a tela de cadastro no celular tocando no botão "Criar Conta"
     Quando preenche os dados corretamente 
     Então o sistema valida os dados e habilita o botão "Cadastrar"
@@ -75,7 +75,7 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
     E desativa o botão "Cadastrar"    
 
   @mudançacheck @unittest
-  Cenário: Cadastro com check sem marcar
+  Cenário: Cadastro com check desmarcados
     Dado que o usuário acessa a tela de cadastro no celular tocando no botão "Criar Conta"
     Quando preenche os dados corretamente 
     Então o sistema valida os dados e habilita o botão "Cadastrar"
