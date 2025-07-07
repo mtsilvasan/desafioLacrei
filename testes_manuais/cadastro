@@ -24,11 +24,21 @@ Status: Pass
 
 ## Cenário CT-007:  Cadastro com e-mail inválido 
 
+Cenário: Cadastro com e-mail inválido depois de atualizar e-mail
+
+Cenário: Cadastro com atualização de confirmação de e-mail incorreta  
+
+Cenário: Cadastro com atualização de confirmação de e-mail e atualização de confirmação de senha 
+
 ## Cenário CT-008:  Cadastro com confirmação de e-mail incorreta 
 
 ## Cenário CT-009:  Cadastro com senha fraca
 
-## Cenário CT-010:  Cadastro com confirmação de e-mail incorreta  
+ Cenário: visulaização de senha inserida
+
+  Cenário: visulaização de confirmação de senha inserida
+
+## Cenário CT-010: Cadastro com confirmação senha incorreta  
 
 ## Cenário CT-011:  Busca e seleção de profissional
 
