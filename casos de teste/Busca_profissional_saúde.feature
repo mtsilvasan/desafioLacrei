@@ -4,7 +4,7 @@
 
 Feature: Busca de profissional de saúde: buscar profissional → contatar profissional
 
- @fluxocompleto @smoketest  
+ @CT-001 @fluxocompleto @smoketest  
  Cenário: Buscar e contatar profissional com sucesso
  # Buscar profissional  
     Dado que o usuário acessa a tela de buscar profissional no celular
@@ -17,7 +17,7 @@ Feature: Busca de profissional de saúde: buscar profissional → contatar profi
     E E toca no botão "Contatar"
     Então o sistema habilita a opcão de contato
  
- @buscarprofissional  @unittest 
+ @CT-002 @buscarprofissional  @unittest 
  Cenário: Busca e seleção de profissional
   Dado que o usuário acessa a tela de buscar profissional no celular
   E acessa os campos de búsqueda
@@ -30,7 +30,7 @@ Feature: Busca de profissional de saúde: buscar profissional → contatar profi
     | Campo          | Valor           |
     | Nome          | "Dra. Ana Silva"       |
 
-  @selecionarprofissional   @unittest
+  @CT-003 @selecionarprofissional   @unittest
   Dado que o usuário acessa a tela de buscar profissional no celular
   Quando seleciona o profissional "Dra. Ana Silva"
   Então o sistema:
@@ -41,7 +41,7 @@ Feature: Busca de profissional de saúde: buscar profissional → contatar profi
      | Tipo de atendimento | "Atendimento presencial, Atendimento on line"|
   - Habilita o botão "Contatar Profissional"
   
-  @contatarprofissionalbemsucedido @unittest @happy_path
+  @CT-004 @contatarprofissionalbemsucedido @unittest @happy_path
   Cenário: Fazer contato com profissional bem sucedido con dados válidos
   Dado que o usuário acessa a tela de buscar profissional no celular
   Quando  toca no botão "Contatar Profissional" do profissional selecionado
@@ -59,7 +59,7 @@ Feature: Busca de profissional de saúde: buscar profissional → contatar profi
     - Exibe a mensagem "Contato realizado com sucesso!"
     - Redireciona para a tela de Proffisionais
 
-   @contatosemdados @unittest
+   @CT-005 @contatosemdados @unittest
    Cenário: Cadastro com campos obrigatórios em branco
    Dado que o usuário acessa ao formulario de contato
    Quando deixa todos ou algum campo editável vazio  
@@ -71,7 +71,7 @@ Feature: Busca de profissional de saúde: buscar profissional → contatar profi
    Quando deixa o check  "Como você gostaria de fazer a consulta"
    Então o sistema mantém o botão "Enviar" desativado  
 
-   @emailinvalido
+   @CT-006 @emailinvalido
    Cenário: Cadastro com e-mail inválido  
    Dado que o usuário acessa acessa ao formulario de contato
    Quando preenche:  
