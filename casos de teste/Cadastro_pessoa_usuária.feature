@@ -96,17 +96,20 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
     Então o sistema mantém o botão "Cadastrar" desativado 
     
    @emailinvalido @unittest
-   Cenário: Cadastro com e-mail inválido  
+   Cenário: Cadastro com e-mail inválido depois de atualizar e-mail
     Dado que o usuário acessa a tela de cadastro no celular tocando no botão "Criar Conta"
+    Quando preenche os dados corretamente 
+    Então o sistema valida os dados e habilita o botão "Cadastrar"
+    
+    Dado que o usuário atualiza o valor do e-mail
     Quando preenche:  
       | Campo               | Valor                |  
       | E-mail              | "email_invalido"      |  
+      | Confirme seu E-mail | "email_valido"      |  
     E toca no botão "Cadastrar"  
     Então o sistema exibe a mensagen (vermelho) embaixo:  
       - "Insira um e-mail válido"     
      E mantém o botão "Cadastrar" desativado 
-
-     
 
   @emailnãocorresponde @unittest
   Cenário: Cadastro com confirmação de e-mail incorreta  
@@ -114,11 +117,37 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
     Quando preenche:  
       | Campo               | Valor                |  
       | Confirme seu e-mail | "outro_email@gmail.com" |  
+    Então o sistema mantém o botão "Cadastrar" desativado
+
+   @emailnãocorresponde @unittest
+   Cenário: Cadastro com atualização de confirmação de e-mail incorreta  
+   Dado que o usuário acessa a tela de cadastro no celular tocando no botão "Criar Conta"
+    Quando preenche os dados corretamente 
+    Então o sistema valida os dados e habilita o botão "Cadastrar"
+    
+    Dado que o usuário atualiza o valor de "Confirme seu e-mail"
+    Quando preenche:  
+      | Campo               | Valor                |  
+      | E-mail              | "email_valido"      |  
+      | Confirme seu e-mail | "email_atualizado@gmail.com" |  
     E toca no botão "Cadastrar"  
     Então o sistema exibe as mensagens (vermelho) embaixo:  
       - "Os e-mails não correspondem, digite novamente"  
      E mantém o botão "Cadastrar" desativado     
- 
+
+  @emailnãocorresponde @unittest
+  Cenário: Cadastro com atualização de confirmação de e-mail e atualização de confirmação de senha  
+   Dado que o usuário acessa a tela de cadastro no celular tocando no botão "Criar Conta"
+    Quando preenche os dados corretamente 
+    Então o sistema valida os dados e habilita o botão "Cadastrar"
+    
+    Dado que o usuário atualiza o valor de "Confirme seu e-mail" e depois atualiza o valor do "E-mail"
+    Quando preenche:  
+      | Campo               | Valor                |  
+      | E-mail              | "email_atualizado@gmail.com"      |  
+      | Confirme seu e-mail | "email_atualizado@gmail.com" |  
+    Então o sistema mantém o botão "Cadastrar" ativado     
+
   @senhafraca @unittest
   Cenário: Cadastro com senha fraca
     Dado que o usuário acessa a tela de cadastro no celular tocando no botão "Criar Conta"
@@ -135,13 +164,29 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
       ✖ Caractere especial (!@#...)
       """
     E mantém o botão "Cadastrar" desativado   
-      
+
+  @visualização de senha
+  Cenário: visulaização de senha inserida
+  Quando preenche:
+      | Campo              | Valor                |  
+      | Senha              | "senha"   
+  E toca no botão de "olho"
+  Então o sistema exibe o valor da senha
+
+  @visualização de confirmação de senha
+  Cenário: visulaização de senha inserida
+  Quando preenche:
+      | Campo                          | Valor                |  
+      | Confirme sua enha              | "senha"   
+  E toca no botão de "olho"
+  Então o sistema exibe o valor do campo Corfirme sua senha
+  
   @senhanãocorresponde @unittest
-  Cenário: Cadastro com confirmação de e-mail incorreta  
+  Cenário: Cadastro com confirmação senha incorreta  
     Dado que o usuário acessa a tela de cadastro no celular tocando no botão "Criar Conta"
     Quando preenche:  
       | Campo               | Valor                |  
-      | Confirme seu e-mail | "outro_email@gmail.com" |  
+      | Confirme sua senha | "outra_senha" |  
     E toca no botão "Cadastrar"  
     Então o sistema exibe as mensagens (vermelho) embaixo:  
        "As senhas não correspondem, digite novamente"   
