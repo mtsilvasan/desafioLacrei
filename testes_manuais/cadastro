@@ -1,4 +1,4 @@
-**Arquivo: casos de teste/Cadastro_pessoa_usuária.feature  **
+minados**Arquivo: casos de teste/Cadastro_pessoa_usuária.feature  **
 Data: 7/7/2025  
 Tester: @MTSilva
 
@@ -16,10 +16,10 @@ Status: Pass
 ## Cenário CT-004:  Cadastro com check sem marcar
 Status: Pass
 
-## Cenário CT-005:  Cadastro com campos obrigatórios em branco
+## Cenário CT-005:  Cadastro com campos obrigatórios eliminados
 
 
-## Cenário CT-006:  Cadastro com check sem marcar
+## Cenário CT-006:  Cadastro com check desmarcados
 
 
 ## Cenário CT-007:  Cadastro com e-mail inválido 
