@@ -25,7 +25,7 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
 
   @cadastrobemsucedido @unittest @happy_path
   Cenário: Cadastro bem-sucedido com dados válidos
-    Dado que o usuário acessa a tela de cadastro no celular 
+    Dado que o usuário acessa a tela de cadastro no celular tocando no botão "Criar Conta"
     Quando Quando preenche os campos obrigatórios seguindo as regras:
       | Campo                 | Valor               |
       | Nome civil ou social  | "Maria"             |
@@ -47,19 +47,19 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
 
   @cadastrosemdados @unittest
   Cenário: Cadastro com campos obrigatórios em branco
-    Dado que o usuário acessa a tela de cadastro no celular 
+    Dado que o usuário acessa a tela de cadastro no celular tocando no botão "Criar Conta"
     Quando deixa todos ou algum campo editável vazio  
     Então o sistema mantém o botão "Cadastrar" desativado   
 
   @cadastroemchecksmarcados @unittest
   Cenário: Cadastro com check sem marcar
-    Dado que o usuário acessa a tela de cadastro no celular 
+    Dado que o usuário acessa a tela de cadastro no celular tocando no botão "Criar Conta"
     Quando deixa todos ou algum check sem marcar  
     Então o sistema mantém o botão "Cadastrar" desativado  
     
   @mudançadedados @unittest
   Cenário: Cadastro com campos obrigatórios em branco
-    Dado que o usuário acessa a tela de cadastro no celular 
+    Dado que o usuário acessa a tela de cadastro no celular tocando no botão "Criar Conta"
     Quando preenche os dados corretamente 
     Então o sistema valida os dados e habilita o botão "Cadastrar"
 
@@ -76,7 +76,7 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
 
   @mudançacheck @unittest
   Cenário: Cadastro com check sem marcar
-    Dado que o usuário acessa a tela de cadastro no celular 
+    Dado que o usuário acessa a tela de cadastro no celular tocando no botão "Criar Conta"
     Quando preenche os dados corretamente 
     Então o sistema valida os dados e habilita o botão "Cadastrar"
     
@@ -89,7 +89,7 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
 
   @emailinvalido @unittest
   Cenário: Cadastro com e-mail inválido  
-    Dado que o usuário acessa a tela de cadastro no celular
+    Dado que o usuário acessa a tela de cadastro no celular tocando no botão "Criar Conta"
     Quando preenche:  
       | Campo               | Valor                |  
       | E-mail              | "email_invalido"      |  
@@ -100,7 +100,7 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
 
   @emailnãocorresponde @unittest
   Cenário: Cadastro com confirmação de e-mail incorreta  
-    Dado que o usuário acessa a tela de cadastro no celular
+    Dado que o usuário acessa a tela de cadastro no celular tocando no botão "Criar Conta"
     Quando preenche:  
       | Campo               | Valor                |  
       | Confirme seu e-mail | "outro_email@gmail.com" |  
@@ -111,7 +111,7 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
  
   @senhafraca @unittest
   Cenário: Cadastro com senha fraca
-    Dado que o usuário acessa a tela de cadastro no celular
+    Dado que o usuário acessa a tela de cadastro no celular tocando no botão "Criar Conta"
     Quando preenche:
       | Campo              | Valor                |  
       | Senha              | "senha"               |  
@@ -128,7 +128,7 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
       
   @senhanãocorresponde @unittest
   Cenário: Cadastro com confirmação de e-mail incorreta  
-    Dado que o usuário acessa a tela de cadastro no celular
+    Dado que o usuário acessa a tela de cadastro no celular tocando no botão "Criar Conta"
     Quando preenche:  
       | Campo               | Valor                |  
       | Confirme seu e-mail | "outro_email@gmail.com" |  
@@ -139,7 +139,7 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
 
   @buscarprofissional  @unittest
   Cenário: Busca e seleção de profissional
-  Dado que o usuário está logado no aplicativo no celular
+  Dado que o usuário está logado no aplicativo no celular tocando no botão "Criar Conta"
   E acessa os campos de búsqueda
   Quando aplica os filtros:
     | Campo          | Valor           |
