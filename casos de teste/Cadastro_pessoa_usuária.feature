@@ -4,7 +4,7 @@ etados#autor: MTSilva
 
 Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar profissional
 
- @fluxocompleto   @smoketest
+ @CT-001 @fluxocompleto   @smoketest
   Cenário: Fluxo integrado cadastro, login e busca de profissional  
     # Cadastro  
     Dado que o usuário acessa a tela de cadastro no celular 
@@ -23,7 +23,7 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
     E toca no botão Buscar
     Então o sistema lista profissionais disponíveis 
 
-  @cadastrobemsucedido @unittest @happy_path
+  @CT-002 @cadastrobemsucedido @unittest @happy_path
   Cenário: Cadastro bem-sucedido com dados válidos
     Dado que o usuário acessa a tela de cadastro no celular tocando no botão "Criar Conta"
     Quando Quando preenche os campos obrigatórios seguindo as regras:
@@ -45,19 +45,19 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
     - Exibe a mensagem "Cadastro realizado com sucesso!"
     - Redireciona para a tela de login
 
-  @cadastrosemdados @unittest
+ @CT-003  @cadastrosemdados @unittest
   Cenário: Cadastro com campos obrigatórios em branco
     Dado que o usuário acessa a tela de cadastro no celular tocando no botão "Criar Conta"
     Quando deixa todos ou algum campo editável vazio  
     Então o sistema mantém o botão "Cadastrar" desativado   
 
-  @cadastroemchecksmarcados @unittest
+  @CT-004 @cadastroemchecksmarcados @unittest
   Cenário: Cadastro com check sem marcar
     Dado que o usuário acessa a tela de cadastro no celular tocando no botão "Criar Conta"
     Quando deixa todos ou algum check sem marcar  
     Então o sistema mantém o botão "Cadastrar" desativado  
     
-  @mudançadedados @unittest
+  @CT-005 @mudançadedados @unittest
   Cenário: Cadastro com campos obrigatórios eliminados
     Dado que o usuário acessa a tela de cadastro no celular tocando no botão "Criar Conta"
     Quando preenche os dados corretamente 
@@ -74,7 +74,7 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
     | Confirme sua senha   | "A senha é obrigatório"      |  
     E desativa o botão "Cadastrar"    
 
-  @mudançacheck @unittest
+  @CT-006 @mudançacheck @unittest
   Cenário: Cadastro com check desmarcados
     Dado que o usuário acessa a tela de cadastro no celular tocando no botão "Criar Conta"
     Quando preenche os dados corretamente 
@@ -87,7 +87,7 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
     | Tenho 18 anos ou mais  | "Você deve ter 18 anos ou mais"      |  
     E desativa o botão "Cadastrar"      
 
-  @emailinvalido @unittest
+  @CT-007 @emailinvalido @unittest
   Cenário: Cadastro com e-mail inválido  
     Dado que o usuário acessa a tela de cadastro no celular tocando no botão "Criar Conta"
     Quando preenche:  
@@ -95,7 +95,7 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
       | E-mail              | "email_invalido"      |  
     Então o sistema mantém o botão "Cadastrar" desativado 
     
-   @emailinvalido @unittest
+   @CT-008 @emailinvalido @unittest
    Cenário: Cadastro com e-mail inválido depois de atualizar e-mail
     Dado que o usuário acessa a tela de cadastro no celular tocando no botão "Criar Conta"
     Quando preenche os dados corretamente 
@@ -111,7 +111,7 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
       - "Insira um e-mail válido"     
      E mantém o botão "Cadastrar" desativado 
 
-  @emailnãocorresponde @unittest
+  @CT-009 @emailnãocorresponde @unittest
   Cenário: Cadastro com confirmação de e-mail incorreta  
     Dado que o usuário acessa a tela de cadastro no celular tocando no botão "Criar Conta"
     Quando preenche:  
@@ -119,7 +119,7 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
       | Confirme seu e-mail | "outro_email@gmail.com" |  
     Então o sistema mantém o botão "Cadastrar" desativado
 
-   @emailnãocorresponde @unittest
+   @CT-010 @emailnãocorresponde @unittest
    Cenário: Cadastro com atualização de confirmação de e-mail incorreta  
    Dado que o usuário acessa a tela de cadastro no celular tocando no botão "Criar Conta"
     Quando preenche os dados corretamente 
@@ -135,7 +135,7 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
       - "Os e-mails não correspondem, digite novamente"  
      E mantém o botão "Cadastrar" desativado     
 
-  @emailnãocorresponde @unittest
+  @CT-011 @emailnãocorresponde @unittest
   Cenário: Cadastro com atualização de confirmação de e-mail e atualização de confirmação de senha  
    Dado que o usuário acessa a tela de cadastro no celular tocando no botão "Criar Conta"
     Quando preenche os dados corretamente 
@@ -148,7 +148,7 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
       | Confirme seu e-mail | "email_atualizado@gmail.com" |  
     Então o sistema mantém o botão "Cadastrar" ativado     
 
-  @senhafraca @unittest
+  @CT-012 @senhafraca @unittest
   Cenário: Cadastro com senha fraca
     Dado que o usuário acessa a tela de cadastro no celular tocando no botão "Criar Conta"
     Quando preenche:
@@ -165,7 +165,7 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
       """
     E mantém o botão "Cadastrar" desativado   
 
-  @visualização de senha
+  @CT-013 @visualização de senha
   Cenário: visulaização de senha inserida
   Quando preenche:
       | Campo              | Valor                |  
@@ -173,7 +173,7 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
   E toca no botão de "olho"
   Então o sistema exibe o valor da senha
 
-  @visualização de confirmação de senha
+  @CT-014 @visualização de confirmação de senha
   Cenário: visulaização de confirmação de senha inserida
   Quando preenche:
       | Campo                          | Valor                |  
@@ -181,7 +181,7 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
   E toca no botão de "olho"
   Então o sistema exibe o valor do campo Corfirme sua senha
   
-  @senhanãocorresponde @unittest
+  @CT-015 @senhanãocorresponde @unittest
   Cenário: Cadastro com confirmação senha incorreta  
     Dado que o usuário acessa a tela de cadastro no celular tocando no botão "Criar Conta"
     Quando preenche:  
@@ -192,7 +192,7 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
        "As senhas não correspondem, digite novamente"   
      E mantém o botão "Cadastrar" desativado     
 
-  @buscarprofissional  @unittest
+  @CT-016 @buscarprofissional  @unittest
   Cenário: Busca e seleção de profissional
   Dado que o usuário está logado no aplicativo no celular tocando no botão "Criar Conta"
   E acessa os campos de búsqueda
