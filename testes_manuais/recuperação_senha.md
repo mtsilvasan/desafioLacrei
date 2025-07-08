@@ -1,4 +1,4 @@
-**Arquivo: casos de teste/Recuperação_senha.feature**
+**Arquivo: features/Recuperação_senha.feature**
 Data: 8/7/2025  
 Tester: @MTSilva
 

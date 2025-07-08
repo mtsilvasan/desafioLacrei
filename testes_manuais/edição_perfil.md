@@ -1,4 +1,4 @@
-**Arquivo: casos de teste/Edição_perfil.feature**
+**Arquivo: features/Edição_perfil.feature**
 Data: 8/7/2025  
 Tester: @MTSilva
 

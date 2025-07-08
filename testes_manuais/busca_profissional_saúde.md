@@ -1,4 +1,4 @@
-**Arquivo: casos de teste/Busca_profissional_saúde.feature**
+**Arquivo: features/Busca_profissional_saúde.feature**
 Data: 8/7/2025  
 Tester: @MTSilva
 
