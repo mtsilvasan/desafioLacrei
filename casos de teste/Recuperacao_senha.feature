@@ -4,7 +4,7 @@
 
 Feature: Recuperação de senha: fluxo completo de esqueci minha senha
 
-    @recuperacao @unittest @happy_path
+    @CT-001 @recuperacao @unittest @happy_path
     Cenário: Fluxo completo de recuperação de senha com e-mail válido
     Dado que o usuário acessa a tela "Esqueci minha senha"
     Quando preenche o campo "Email" com "maria@gmail.com"
@@ -25,7 +25,7 @@ Feature: Recuperação de senha: fluxo completo de esqueci minha senha
       - Exibe "Senha redefinida com sucesso"
       - Redireciona para a tela de login
 
-    @formatoemailinvalido @unittest
+    @CT-002 @formatoemailinvalido @unittest
     Cenário: Recuperação de senha com e-mail inválido  
     Dado que o usuário acessa a tela "Esqueci minha senha"
     Quando preenche:  
@@ -33,7 +33,7 @@ Feature: Recuperação de senha: fluxo completo de esqueci minha senha
       | E-mail              | "email_invalido"      |  
     Então Então o sistema mantém o botão "Cadastrar" desativado   
 
-    @emailnaocadastrado @unittest
+    @CT-003 @emailnaocadastrado @unittest
     Cenário: Recuperação de senha com e-mail inválido  
     Dado que o usuário acessa a tela "Esqueci minha senha"
     Quando preenche:  
@@ -44,7 +44,7 @@ Feature: Recuperação de senha: fluxo completo de esqueci minha senha
       - "Algo deu errado, por favor, confira os dados inseridos e tente novamente."     
      E desativa o botão "Redefinir senha" 
 
-    @senhafraca  @unittest
+   @CT-004  @senhafraca  @unittest
     Cenário: Redefinição com senha fraca
     Dado que o usuário acessa o link no e-mail recebido
     Quando preenche:
@@ -61,7 +61,7 @@ Feature: Recuperação de senha: fluxo completo de esqueci minha senha
       """
     E desativa botão "Redefinir senha" 
       
-  @senhanãocorresponde @unittest
+  @CT-005 @senhanãocorresponde @unittest
   Cenário: Cadastro com confirmação de e-mail incorreta  
   Dado que o usuário acessa o link no e-mail recebido
   Quando preenche:  
@@ -72,7 +72,7 @@ Feature: Recuperação de senha: fluxo completo de esqueci minha senha
        "As senhas não correspondem, digite novamente"   
   E destaiva o botão "Redefinir senha" 
 
- @linkexpirado @unittest
+ @CT-006 @linkexpirado @unittest
   Cenário: Link de recuperação expirado
     Dado que o usuário recebeu um link 
     Quando tenta redefinir a senha via link expirado
