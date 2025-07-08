@@ -4,11 +4,11 @@ Tester: @MTSilva
 
 ## Cenário CT-001: Fluxo integrado cadastro, login e busca de profissional  
 Status:  Fail
-Bug Report: [Issue #1](https://github.com/........................./issues/1)  
+Bug Report: docs/issues/issue1.md
 
 ## Cenário CT-002:  Cadastro bem-sucedido com dados válidos
 Status: Fail 
-Bug Report: [Issue #1](https://github.com/............/issues/1)  
+Bug Report: docs/issues/issue1.md
 
 ## Cenário CT-003:  Cadastro com campos obrigatórios em branco
 Status: Pass
@@ -32,7 +32,8 @@ Status: Pass
 Status: Pass
 
 ## Cenário CT-010: Cadastro com atualização de confirmação de e-mail e atualização de confirmação de senha 
-Status: Fail (https://github.com/............/issues/2)  
+Status: Fail 
+Bug Report: docs/issues/issue2.md
 
 ## Cenário CT-011:  Cadastro com confirmação de e-mail incorreta 
 Status: Pass
