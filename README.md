@@ -37,3 +37,14 @@ Tester: @mtsilva
 ------------------------------------------
 
 
+## Teste de Performance - Cadastro de Usuários
+
+### Problema Identificado
+O botão "Cadastrar" não dispara a ação esperada, invalidando testes de carga no estado atual.
+
+### Decisão
+**Testes com JMeter foram suspensos** até a correção do bug funcional, pois os resultados não seriam representativos.
+
+### Próximos Passos
+1. Correção do bug (ver [relatório técnico](./docs/RELATORIO_TECNICO.md)).
+2. Execução dos testes de carga pós-correção.
