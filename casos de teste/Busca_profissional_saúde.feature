@@ -18,7 +18,7 @@ Feature: Busca de profissional de saúde: buscar profissional → contatar profi
     Então o sistema habilita a opcão de contato
  
  @CT-002 @buscarprofissional  @unittest 
- Cenário: Busca e seleção de profissional
+ Cenário: Busca de profissional
   Dado que o usuário acessa a tela de buscar profissional no celular
   E acessa os campos de búsqueda
   Quando aplica os filtros:
@@ -31,6 +31,7 @@ Feature: Busca de profissional de saúde: buscar profissional → contatar profi
     | Nome          | "Dra. Ana Silva"       |
 
   @CT-003 @selecionarprofissional   @unittest
+  Cenário: Seleção de profissional
   Dado que o usuário acessa a tela de buscar profissional no celular
   Quando seleciona o profissional "Dra. Ana Silva"
   Então o sistema:
