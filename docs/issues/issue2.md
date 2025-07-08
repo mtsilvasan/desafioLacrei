@@ -3,7 +3,7 @@
 Arquivo de features: 'features/Cadastro_pessoa_usuária.feature'
 
 Escenarios relacionados:
-CT-001 Cenário: Fluxo integrado cadastro, login e busca de profissional  
+Cenário CT-010: Cadastro com atualização de confirmação de e-mail e atualização de confirmação de senha 
 
 1. Descrição:
 
