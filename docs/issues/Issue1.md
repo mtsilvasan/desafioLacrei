@@ -14,23 +14,19 @@ Comportamento Atual: O botão não realiza nenhuma ação (não há redirecionam
 
 
 2. Passos para Reprodução
-Acessar a tela de cadastro (/cadastro).
-
-Preencher todos os campos com dados válidos:
-
-text
-Nome: "Maria Silva"  
-E-mail: "maria@exemplo.com"  
-Senha: "Senha@123"  
-Clicar no botão "Cadastrar".
+- Acessar ao site https://paciente-staging.lacreisaude.com.br/
+- Tocar no botão "Criar Conta"
+- Preencher todos os campos com dados válidos
+- Marcar os check de "Li e concordo" e "Theno mais de 18 anos"
+- Tocar no botão "Cadastrar"
 
 Resultado Observado: Nenhuma ação é executada 
 
 3. Impacto e Prioridade
 Critério	        Detalhe
-Impacto	          Bloqueia completamente o fluxo de cadastro de novos usuários
-Prioridade	      Alta (P1) - Impede funcionalidade crítica
-Sugestão	        Corrigir antes do próximo deploy em produção
+Impacto	        Bloqueia completamente o fluxo de cadastro de novos usuários
+Prioridade	     Alta  - Impede funcionalidade crítica
+Sugestão	        Corrigir antes do deploy em produção
 
 4. Evidências
    Video : https://drive.google.com/file/d/1Gu7994sWqTpY46OEaK_-eREXkODXa-Oh/view?usp=sharing
