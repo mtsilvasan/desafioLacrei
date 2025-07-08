@@ -34,7 +34,7 @@ Feature: Recuperação de senha: fluxo completo de esqueci minha senha
     Então Então o sistema mantém o botão "Cadastrar" desativado   
 
     @CT-003 @emailnaocadastrado @unittest
-    Cenário: Recuperação de senha com e-mail inválido  
+    Cenário: Recuperação de senha com e-mail válido não cadastrado
     Dado que o usuário acessa a tela "Esqueci minha senha"
     Quando preenche:  
       | Campo               | Valor                |  
