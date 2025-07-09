@@ -1,8 +1,7 @@
+@CT-001 @cadastrobemsucedido @automated
 #autor: MTSilva
 #data: 9/7/25
 #language: pt
-
-@CT-001 @cadastrobemsucedido @automated
 Feature: Cadastro de Pessoa Usuária
 
   Cenário: Cadastro bem-sucedido com dados válidos
