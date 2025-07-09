@@ -1,4 +1,4 @@
-etados#autor: MTSilva
+#autor: MTSilva
 #data: 6/7/25
 #language: pt
 
@@ -26,7 +26,7 @@ Feature: Cadastro da pessoa usuária: cadastro → pós-cadastro → buscar prof
   @CT-002 @cadastrobemsucedido @unittest @happy_path
   Cenário: Cadastro bem-sucedido com dados válidos
     Dado que o usuário acessa a tela de cadastro no celular tocando no botão "Criar Conta"
-    Quando Quando preenche os campos obrigatórios seguindo as regras:
+    Quando preenche os campos obrigatórios seguindo as regras:
       | Campo                 | Valor               |
       | Nome civil ou social  | "Maria"             |
       | Sobrenome             | "Silva"             |
