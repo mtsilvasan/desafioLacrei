@@ -25,7 +25,7 @@ Resultado Observado: Nenhuma ação é executada
 3. Impacto e Prioridade
 Critério	        Detalhe
 Impacto	        Bloqueia completamente o fluxo de cadastro de novos usuários
-Prioridade	     Alta  - Impede funcionalidade crítica
+Prioridade	     Crítica  - Impede funcionalidade crítica
 Sugestão	        Corrigir antes do deploy em produção
 
 4. Evidências
