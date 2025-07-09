@@ -1,3 +1,4 @@
+
 # desafioQALacrei
 Repositorio creado para el desafio de QA de LAcrei
 ------------------------------------------
@@ -48,3 +49,6 @@ O botão "Cadastrar" não dispara a ação esperada, invalidando testes de carga
 ### Próximos Passos
 1. Correção do bug (ver [relatório técnico](./docs/RELATORIO_TECNICO.md)).
 2. Execução dos testes de carga pós-correção.
+=======
+# desafioLacrei
+
