@@ -6,7 +6,7 @@ Given('que acesso a página {string} em {string}', (path, device) => {
     desktop: [1440, 900]
   };
   cy.viewport(...viewports[device]);
-  cy.visit(path);
+  cy.visit(`https://paciente-staging.lacreisaude.com.br${path}`);
 });
 
 When('preencho os campos:', (dataTable) => {

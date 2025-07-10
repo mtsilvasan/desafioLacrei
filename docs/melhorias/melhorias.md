@@ -1,0 +1,3 @@
+1. Bordes dos campos ativos com mais contraste
+2. No cadastro de usuario o botão "Cadastrar" não fica ativado até não ter error, mais não mostra com claridade o campo que tem erro. As mensagens de erro se mostram depois de haber clicado botão "Cadastrar" uma primeira vez
+3. O layout dos termos de uso e policita de privacidade tem tamanho de fonte diferente, igualar o tamanho de fonte da politica de provacidade ao tamanho de fomte dos termos de uso
