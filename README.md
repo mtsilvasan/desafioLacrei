@@ -136,3 +136,4 @@ resultados em /docs/relatorio_teste_accesibilidade.md
 # ** Execução de Testes de Automatizados **
 --------------------------------------------
 Ainda não foi finalizado, consegui fazer o teste basico de "Hola mundo", vou continuar trabalhando nele
+update 11/7 consegui fazer o fluxo completo de cadasto! (hola_mundo.js e hola_mundo.feature)

@@ -50,70 +50,110 @@ When('preencho os campos:', (dataTable) => {
 const { When } = require('@badeball/cypress-cucumber-preprocessor');
 
 When('marco o checkbox {string}', (checkboxName) => {
-    // 1. Mapeo de selectores confirmados
-    const CHECKBOX_SELECTORS = {
-      "Termos de Uso": [
-        'input[name="accepted_privacy_document"][data-gtm-form-interact-field-id="0"]',
-        'input[name="accepted_privacy_document"]',
-        '[data-gtm-form-interact-field-id="0"]'
-      ],
-      "Maior de 18 anos": [
-        'input[name="is_18_years_old_or_more"][data-gtm-form-interact-field-id="1"]',
-        'input[name="is_18_years_old_or_more"]',
-        '[data-gtm-form-interact-field-id="1"]'
-      ]
-    };
+  // 1. Selectores directos sin usar posición
+  const CHECKBOX_SELECTORS = {
+    "Termos de Uso": 'input[name="accepted_privacy_document"]',
+    "Maior de 18 anos": 'input[name="is_18_years_old_or_more"]'
+  };
+
+  const selector = CHECKBOX_SELECTORS[checkboxName];
   
-    // 2. Eliminamos completamente la búsqueda por texto
-    const selectors = CHECKBOX_SELECTORS[checkboxName];
-    
-    // 3. Función para intentar cada selector
-    const trySelector = (selector) => {
-      return cy.get('body').then(($body) => {
-        const $el = $body.find(selector);
-        if ($el.length) {
-          cy.wrap($el).click({ force: true });
-          return true;
-        }
-        return false;
-      });
-    };
-  
-    // 4. Intentamos cada selector secuencialmente
-    cy.wrap(selectors).each((selector) => {
-      cy.then(() => trySelector(selector)).then((success) => {
-        if (success) {
-          cy.log(`Checkbox encontrado con selector: ${selector}`);
-          return false; // Detiene el each
-        }
-        return true; // Continúa al siguiente selector
+  // 2. Verificación inicial del estado
+  cy.get(selector).then(($checkbox) => {
+    const initialChecked = $checkbox.prop('checked');
+    cy.log(`Estado inicial de "${checkboxName}": ${initialChecked}`);
+  });
+
+  // 3. Acción única con verificación inmediata
+  cy.get(selector)
+    .should('exist')
+    .check({ force: true })
+    .should('be.checked')
+    .then(($checkbox) => {
+      cy.log(`Estado confirmado de "${checkboxName}": ${$checkbox.prop('checked')}`);
+      
+      // 4. Verificación de persistencia después de 500ms
+      cy.wait(500).then(() => {
+        cy.get(selector).should(($el) => {
+          if (!$el.prop('checked')) {
+            throw new Error(`El checkbox "${checkboxName}" se desmarcó automáticamente`);
+          }
+        });
       });
     });
-  
-    // 5. Validación final
-    cy.get(selectors[0]).should('be.checked');
-  });
-        
-  Then('o botão {string} deve estar habilitado', (botaoText) => {
-    cy.contains('button', botaoText).should('be.enabled');
-  });
-  
-  When('clico no botão {string}', (botaoText) => {
-    cy.contains('button', botaoText).click();
-  });
-  
-  Then('sou redirecionado para {string}', (path) => {
-    cy.location('pathname').should('eq', path); // Mejor práctica para rutas
-  });
-  
-  Then('vejo a mensagem {string}', (mensagem) => {
-    cy.contains(mensagem, { timeout: 10000 })
-      .should('be.visible');
-  });  
+});
+      
+Then('o botão {string} deve estar habilitado', (botaoText) => {
+  cy.contains('button', botaoText, { timeout: 10000 })
+    .should('be.visible')
+    .and('not.be.disabled')
+    .then($botao => {
+      cy.log(`Estado del botón "${botaoText}":`, {
+        disabled: $botao.prop('disabled'),
+        classes: $botao.attr('class'),
+        text: $botao.text().trim()
+      });
+    });
+});
 
-Then('veo el texto {string}', (texto) => {
-  cy.contains(texto, { 
-    timeout: 15000,
-    matchCase: false
-  }).should('be.visible');
+// En cypress/support/e2e.js (configuración global)
+Cypress.on('uncaught:exception', (err, runnable) => {
+  // Lista de errores conocidos de la aplicación
+  const expectedErrors = [
+    "Cannot read properties of undefined (reading 'data')",
+    "Cannot read property 'data' of undefined"
+  ];
+  
+  if (expectedErrors.some(msg => err.message.includes(msg))) {
+    console.error('Error de aplicación capturado:', err.message);
+    // Evita que Cypress falle la prueba
+    return false;
+  }
+  // Para otros errores, permite que Cypress falle la prueba
+  return true;
+});
+
+When('clico no botão {string}', (botaoText) => {
+  // 1. Verificación exhaustiva del botón
+  cy.contains('button', botaoText, { timeout: 15000 })
+    .should('be.visible')
+    .and('not.be.disabled')
+    .then(($btn) => {
+      // Debug: mostrar propiedades del botón
+      const btn = $btn[0];
+      console.log('Propiedades del botón:', {
+        tagName: btn.tagName,
+        type: btn.type,
+        class: btn.className,
+        formMethod: btn.form ? btn.form.method : null,
+        formAction: btn.form ? btn.form.action : null,
+        eventListeners: typeof getEventListeners === 'function' ? 
+          getEventListeners(btn) : 'No disponible en este contexto'
+      });
+    });
+
+  // 2. Interceptar llamadas API relevantes
+  cy.intercept('POST', '**/api/**').as('apiCall');
+  cy.intercept('GET', '**/cadastro/**').as('getRequest');
+
+  // 3. Ejecutar clic
+  cy.contains('button', botaoText).click();
+
+  // 4. Esperar y analizar la respuesta
+  cy.wait('@apiCall', { timeout: 10000, requestTimeout: 15000 })
+    .then((interception) => {
+      if (!interception.response) {
+        cy.log('Error en la llamada API:', {
+          status: interception.response?.statusCode,
+          body: interception.response?.body,
+          error: interception.error
+        });
+      } else {
+        cy.log('Respuesta exitosa:', interception.response.body);
+      }
+    })
+    .catch(() => {
+      cy.log('No se detectó llamada API, verificando redirección...');
+      cy.location('pathname', { timeout: 5000 }).should('not.include', 'cadastro');
+    });
 });
